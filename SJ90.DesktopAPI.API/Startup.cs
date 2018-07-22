@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
+using SJ90.DesktopAPI.Domain.Interfaces;
+using SJ90.DesktopAPI.Infrastructure;
+using SJ90.DesktopAPI.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace SJ90.DesktopAPI.API
 {
@@ -27,7 +26,7 @@ namespace SJ90.DesktopAPI.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddAutoMapper();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
@@ -52,6 +51,11 @@ namespace SJ90.DesktopAPI.API
 
                     c.IncludeXmlComments(xmlDocPath);
             });
+
+            //services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase());
+
+            services.AddTransient<ISchedulingService, SchedulingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SJ90.DesktopAPI.Domain;
 using SJ90.DesktopAPI.Domain.Enums;
+using SJ90.DesktopAPI.Domain.Interfaces;
+using SJ90.DesktopAPI.Infrastructure;
 
 namespace SJ90.DesktopAPI.API.Controllers
 {
@@ -14,30 +18,30 @@ namespace SJ90.DesktopAPI.API.Controllers
     [Route("v1/[controller]")]
     public class SchedulingController : Controller
     {
+        private readonly ISchedulingService _schedulingService;
+        private readonly IMapper _mapper;
+
+        public SchedulingController(ISchedulingService schedulingService, IMapper mapper)
+        {
+            _schedulingService = schedulingService;
+            _mapper = mapper;
+        }
+
         /// <summary>
         /// Obtém todos os agendamentos
         /// </summary>
         /// <returns>Todos os agendamentos cadastrados</returns>
         [HttpGet]
-        public IEnumerable<Scheduling> GetAll()
+        public IActionResult GetAll()
         {
-            return new Scheduling[]
+            IEnumerable<Scheduling> schedulings = _schedulingService.GetAll();
+
+            if (schedulings == null)
             {
-                new Scheduling
-                {
-                    Id = 1,
-                    Day = DateTime.Today,
-                    Hour = 15,
-                    Status = SchedulingStatus.Approved
-                },
-                new Scheduling
-                {
-                    Id = 2,
-                    Day = DateTime.Today.AddDays(1),
-                    Hour = 11,
-                    Status = SchedulingStatus.Rejected
-                }
-            };
+                return NotFound();
+            }
+
+            return Ok(schedulings);
         }
 
         /// <summary>
@@ -46,15 +50,16 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// <param name="id">identificador do agendamento</param>
         /// <returns>Agendamento com o identificador passado</returns>
         [HttpGet("{id}")]
-        public Scheduling Get(int id)
+        public IActionResult Get(long id)
         {
-            return new Scheduling
+            var scheduling = _schedulingService.GetById(id);
+
+            if (scheduling == null)
             {
-                Id = 2,
-                Day = DateTime.Today.AddDays(1),
-                Hour = 11,
-                Status = SchedulingStatus.Rejected
-            };
+                return NotFound();
+            }
+
+            return Ok(scheduling);      
         }
 
         /// <summary>
@@ -62,8 +67,11 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// </summary>
         /// <param name="value">Agendamento a ser adicionado</param>
         [HttpPost]
-        public void Post([FromBody]Scheduling value)
+        public IActionResult Post([FromBody]Scheduling scheduling)
         {
+            _schedulingService.Add(scheduling);
+
+            return Ok();
         }
 
         /// <summary>
@@ -72,8 +80,11 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// <param name="id">Identificador do agendamento</param>
         /// <param name="value">Informações a serem atualizadas</param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Scheduling value)
+        public IActionResult Put(long id, [FromBody]Scheduling scheduling)
         {
+            _schedulingService.Update(id, scheduling);
+
+            return Ok();
         }
 
         /// <summary>
@@ -81,8 +92,11 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// </summary>
         /// <param name="id">Identificador do agendamento a ser deletado</param>
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(long id)
         {
+            _schedulingService.Delete(id);
+
+            return Ok();
         }
     }
 }

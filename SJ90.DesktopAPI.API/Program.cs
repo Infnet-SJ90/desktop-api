@@ -34,11 +34,5 @@ namespace SJ90.DesktopAPI.API
                 host.RunAsService();
             }
         }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .UseStartup<Startup>()
-                .Build();
     }
 }

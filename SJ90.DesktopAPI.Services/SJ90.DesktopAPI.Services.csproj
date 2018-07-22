@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SJ90.DesktopAPI.Domain\SJ90.DesktopAPI.Domain.csproj" />
+    <ProjectReference Include="..\SJ90.DesktopAPI.Infrastructure\SJ90.DesktopAPI.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
