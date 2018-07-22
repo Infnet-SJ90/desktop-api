@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace SJ90.Scheduling.API
+namespace SJ90.DesktopAPI.API
 {
     public class Startup
     {

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SJ90.DesktopAPI.Domain;
+using SJ90.DesktopAPI.Domain.Enums;
 
-namespace SJ90.Scheduling.API.Controllers
+namespace SJ90.DesktopAPI.API.Controllers
 {
+    /// <summary>
+    /// Controller responsável por lidar com operações relacionadas a agendamentos
+    /// </summary>
     [Route("v1/[controller]")]
     public class SchedulingController : Controller
     {
@@ -14,9 +19,25 @@ namespace SJ90.Scheduling.API.Controllers
         /// </summary>
         /// <returns>Todos os agendamentos cadastrados</returns>
         [HttpGet]
-        public IEnumerable<string> GetAll()
+        public IEnumerable<Scheduling> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return new Scheduling[]
+            {
+                new Scheduling
+                {
+                    Id = 1,
+                    Day = DateTime.Today,
+                    Hour = 15,
+                    Status = SchedulingStatus.Approved
+                },
+                new Scheduling
+                {
+                    Id = 2,
+                    Day = DateTime.Today.AddDays(1),
+                    Hour = 11,
+                    Status = SchedulingStatus.Rejected
+                }
+            };
         }
 
         /// <summary>
@@ -25,9 +46,15 @@ namespace SJ90.Scheduling.API.Controllers
         /// <param name="id">identificador do agendamento</param>
         /// <returns>Agendamento com o identificador passado</returns>
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Scheduling Get(int id)
         {
-            return "value";
+            return new Scheduling
+            {
+                Id = 2,
+                Day = DateTime.Today.AddDays(1),
+                Hour = 11,
+                Status = SchedulingStatus.Rejected
+            };
         }
 
         /// <summary>
@@ -35,7 +62,7 @@ namespace SJ90.Scheduling.API.Controllers
         /// </summary>
         /// <param name="value">Agendamento a ser adicionado</param>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Scheduling value)
         {
         }
 
@@ -45,7 +72,7 @@ namespace SJ90.Scheduling.API.Controllers
         /// <param name="id">Identificador do agendamento</param>
         /// <param name="value">Informações a serem atualizadas</param>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Scheduling value)
         {
         }
 

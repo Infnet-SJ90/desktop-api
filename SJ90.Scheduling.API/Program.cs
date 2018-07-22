@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace SJ90.Scheduling.API
+namespace SJ90.DesktopAPI.API
 {
     public class Program
     {

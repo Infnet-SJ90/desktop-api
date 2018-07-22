@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\SJ90.Scheduling.API.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netcoreapp2.0\SJ90.DesktopAPI.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +19,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SJ90.DesktopAPI.Domain\SJ90.DesktopAPI.Domain.csproj" />
   </ItemGroup>
 
 </Project>

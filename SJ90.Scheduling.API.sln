@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ90.Scheduling.API", "SJ90.Scheduling.API\SJ90.Scheduling.API.csproj", "{1A8D6491-7116-4A2E-980D-DF181808972D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ90.DesktopAPI.API", "SJ90.Scheduling.API\SJ90.DesktopAPI.API.csproj", "{1A8D6491-7116-4A2E-980D-DF181808972D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ90.DesktopAPI.Domain", "..\SJ90.DesktopAPI.Domain\SJ90.DesktopAPI.Domain.csproj", "{A0A49911-4D18-46B0-9BF6-45D3DA5C7627}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1A8D6491-7116-4A2E-980D-DF181808972D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A8D6491-7116-4A2E-980D-DF181808972D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A8D6491-7116-4A2E-980D-DF181808972D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A49911-4D18-46B0-9BF6-45D3DA5C7627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A49911-4D18-46B0-9BF6-45D3DA5C7627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A49911-4D18-46B0-9BF6-45D3DA5C7627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A49911-4D18-46B0-9BF6-45D3DA5C7627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
