@@ -23,8 +23,6 @@ namespace SJ90.DesktopAPI.Services
         public void Add(Scheduling scheduling)
         {
             var entity = _mapper.Map<SchedulingEntity>(scheduling);
-            entity.ModifiedDate = DateTime.Now.Date;
-            entity.AddedDate = DateTime.Now.Date;
             _context.Add<SchedulingEntity>(entity);
             _context.SaveChanges();
         }
@@ -54,7 +52,6 @@ namespace SJ90.DesktopAPI.Services
                 entity.Day = scheduling.Day;
                 entity.Hour = scheduling.Hour;
                 entity.Status = scheduling.Status;
-                entity.ModifiedDate = DateTime.Now.Date;
                 _context.Set<SchedulingEntity>().Update(entity);
                 _context.SaveChanges();
             }
