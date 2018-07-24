@@ -32,9 +32,9 @@ namespace SJ90.DesktopAPI.API
                 c.SwaggerDoc("v1",
                     new Info
                     {
-                        Title = "Gerenciador de agendamento",
+                        Title = "Gerenciador de coleta de entulho",
                         Version = "v1",
-                        Description = "API REST criada com o ASP.NET Core para lidar com configurações e gerencimento de agendamentos",
+                        Description = "API REST criada com o ASP.NET Core para lidar com configurações e gerencimento de operações relacionadas a coleta de entulho",
                         Contact = new Contact
                         {
                             Name = "SJ90",
