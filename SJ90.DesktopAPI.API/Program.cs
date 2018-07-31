@@ -16,28 +16,18 @@ namespace SJ90.DesktopAPI.API
     {
         public static void Main(string[] args)
         {
-            var exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            var directoryPath = Path.GetDirectoryName(exePath);
             var config = new ConfigurationBuilder().AddCommandLine(args).Build();
 
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseConfiguration(config)
                 .UseIISIntegration()
-                .UseContentRoot(directoryPath)
                 .UseStartup<Startup>()
+                //.UseUrls("http://0.0.0.0:1997/")
                 .Build();
 
             host.Run();
-
-            //if (Debugger.IsAttached || args.Contains("--debug"))
-            //{
-            //    host.Run();
-            //}
-            //else
-            //{
-            //    host.RunAsService();
-            //}
         }
     }
 }

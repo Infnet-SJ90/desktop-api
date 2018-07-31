@@ -3,7 +3,7 @@ using SJ90.DesktopAPI.API;
 using System;
 using Xunit;
 
-namespace SJ90.DestktopAPI.Tests
+namespace SJ90.DesktopAPI.Tests
 {
     public class AutoMapperTests
     {
