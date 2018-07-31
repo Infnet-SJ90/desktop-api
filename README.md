@@ -1,3 +1,5 @@
+[![Waffle.io - Issues in progress](https://badge.waffle.io/Infnet-SJ90/desktop-api.png?label=in%20progress&title=In%20Progress)](http://waffle.io/Infnet-SJ90/desktop-api)
+
 # Scheduling-api
 API for scheduling management
 
