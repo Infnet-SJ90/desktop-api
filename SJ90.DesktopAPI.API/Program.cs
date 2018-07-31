@@ -24,7 +24,7 @@ namespace SJ90.DesktopAPI.API
                 .UseConfiguration(config)
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                //.UseUrls("http://localhost:5001/")
+                .UseUrls("http://0.0.0.0:5656/")
                 .Build();
 
             host.Run();
