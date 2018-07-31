@@ -1,3 +1,5 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/Infnet-SJ90/desktop-api.svg?columns=all)](https://waffle.io/Infnet-SJ90/desktop-api)
+
 # Scheduling-api
 API for scheduling management
 
