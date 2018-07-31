@@ -10,7 +10,7 @@ using System;
 using SJ90.DesktopAPI.Domain.Enums;
 using System.Linq;
 
-namespace SJ90.DestktopAPI.Tests
+namespace SJ90.DesktopAPI.Tests
 {
     public class SchedulingServiceTest
     {

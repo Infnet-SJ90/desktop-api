@@ -28,15 +28,6 @@ namespace SJ90.DesktopAPI.API
                 .Build();
 
             host.Run();
-
-            //if (Debugger.IsAttached || args.Contains("--debug"))
-            //{
-            //    host.Run();
-            //}
-            //else
-            //{
-            //    host.RunAsService();
-            //}
         }
     }
 }

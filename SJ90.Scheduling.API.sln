@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SJ90.DesktopAPI.Domain", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SJ90.DesktopAPI.Infrastructure", "SJ90.DesktopAPI.Infrastructure\SJ90.DesktopAPI.Infrastructure.csproj", "{E496BAD7-80E9-450F-8E88-0C3CCC1E99C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ90.DestktopAPI.Tests", "SJ90.DestktopAPI.Tests\SJ90.DestktopAPI.Tests.csproj", "{F5310864-4129-4A2F-8E76-5F9A35BE33B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SJ90.DesktopAPI.Tests", "SJ90.DestktopAPI.Tests\SJ90.DesktopAPI.Tests.csproj", "{F5310864-4129-4A2F-8E76-5F9A35BE33B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SJ90.DesktopAPI.Services", "SJ90.DesktopAPI.Services\SJ90.DesktopAPI.Services.csproj", "{51EB1AC7-C692-4530-8062-1432A16860B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SJ90.DesktopAPI.Services", "SJ90.DesktopAPI.Services\SJ90.DesktopAPI.Services.csproj", "{51EB1AC7-C692-4530-8062-1432A16860B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
