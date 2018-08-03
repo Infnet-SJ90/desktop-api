@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SJ90.DesktopAPI.Domain;
 
 namespace SJ90.DesktopAPI.Infrastructure.DatabaseMappers
 {
     public class SchedulingMap
     {
-        public SchedulingMap(EntityTypeBuilder<SchedulingEntity> entityBuilder)
+        public SchedulingMap(EntityTypeBuilder<Scheduling> entityBuilder)
         {
             entityBuilder.HasKey(t => t.Id);
             entityBuilder.Property(t => t.Day).IsRequired();

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SJ90.DesktopAPI.Infrastructure
+namespace SJ90.DesktopAPI.Domain
 {
     public class BaseEntity
     {

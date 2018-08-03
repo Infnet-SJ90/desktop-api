@@ -11,7 +11,7 @@ namespace SJ90.DesktopAPI.Infrastructure
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<SchedulingEntity> Scheduling {get; set; }
+        public DbSet<Scheduling> Scheduling {get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -19,7 +19,7 @@ namespace SJ90.DesktopAPI.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new SchedulingMap(modelBuilder.Entity<SchedulingEntity>());
+            new SchedulingMap(modelBuilder.Entity<Scheduling>());
         }
 
         public override int SaveChanges()

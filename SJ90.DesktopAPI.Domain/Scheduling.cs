@@ -6,10 +6,8 @@ namespace SJ90.DesktopAPI.Domain
     /// <summary>
     /// Classe responsável por representar uma abstração de agendamento
     /// </summary>
-    public class Scheduling
+    public class Scheduling : BaseEntity
     {
-        public long Id { get; set; }
-
         public DateTime Day { get; set; }
 
         public int Hour { get; set; }
