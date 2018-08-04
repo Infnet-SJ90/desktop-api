@@ -2,24 +2,21 @@
 using SJ90.DesktopAPI.Domain;
 using SJ90.DesktopAPI.Infrastructure.DatabaseMappers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SJ90.DesktopAPI.Infrastructure
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<SchedulingEntity> Scheduling {get; set; }
+        public DbSet<Scheduling> Scheduling {get; set; }
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
-        {
-        }
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            new SchedulingMap(modelBuilder.Entity<SchedulingEntity>());
+            new SchedulingMap(modelBuilder.Entity<Scheduling>());
+            new SchedulingRequestMap(modelBuilder.Entity<SchedulingRequest>());
         }
 
         public override int SaveChanges()

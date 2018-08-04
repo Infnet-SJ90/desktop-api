@@ -13,7 +13,6 @@ namespace SJ90.DesktopAPI.API
     {
         public MappingProfile()
         {
-            CreateMap<SchedulingEntity, Scheduling>().ReverseMap();
         }
     }
 }

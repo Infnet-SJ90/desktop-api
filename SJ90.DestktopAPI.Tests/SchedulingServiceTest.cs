@@ -9,6 +9,7 @@ using SJ90.DesktopAPI.Domain;
 using System;
 using SJ90.DesktopAPI.Domain.Enums;
 using System.Linq;
+using SJ90.DesktopAPI.Infrastructure.Repositories;
 
 namespace SJ90.DesktopAPI.Tests
 {
@@ -38,18 +39,19 @@ namespace SJ90.DesktopAPI.Tests
                     Day = DateTime.Today,
                     Hour = 12,
                     Id = 1,
-                    Status = SchedulingStatus.Approved
+                    Status = SchedulingStatus.Active,
+                    SchedulingRequestId = 1
                 };
 
-                var service = new SchedulingService(context, _mapper);
+                var service = new SchedulingService(context, new SchedulingRepository(context));
                 service.Add(scheduling);
             }
 
             using (var context = new DatabaseContext(options))
             {
-                Assert.Single(context.Set<SchedulingEntity>().ToList());
+                Assert.Single(context.Set<Scheduling>().ToList());
 
-                Assert.Equal(1, context.Set<SchedulingEntity>().Single().Id);
+                Assert.Equal(1, context.Set<Scheduling>().Single().Id);
             }
         }
 
@@ -66,16 +68,17 @@ namespace SJ90.DesktopAPI.Tests
                 {
                     Day = DateTime.Today,
                     Hour = 12,
-                    Id = 1,
-                    Status = SchedulingStatus.Approved
+                    Status = SchedulingStatus.Active
                 };
 
-                var service = new SchedulingService(context, _mapper);
+                var service = new SchedulingService(context, new SchedulingRepository(context));
                 service.Add(scheduling);
-                Assert.Single(context.Set<SchedulingEntity>().ToList());
+                Assert.Single(context.Set<Scheduling>().ToList());
 
-                service.Delete(1);
-                Assert.Empty(context.Set<SchedulingEntity>().ToList());
+                var insertedScheduling = service.GetAll().First();
+
+                service.Delete(insertedScheduling.Id);
+                Assert.Empty(context.Set<Scheduling>().ToList());
             }
         }
 
@@ -93,17 +96,17 @@ namespace SJ90.DesktopAPI.Tests
                     Day = DateTime.Today,
                     Hour = 12,
                     Id = 1,
-                    Status = SchedulingStatus.Approved
+                    Status = SchedulingStatus.Active
                 };
 
-                var service = new SchedulingService(context, _mapper);
+                var service = new SchedulingService(context, new SchedulingRepository(context));
                 service.Add(scheduling);
-                Assert.Single(context.Set<SchedulingEntity>().ToList());
-                Assert.Equal(12, context.Set<SchedulingEntity>().Single().Hour);
+                Assert.Single(context.Set<Scheduling>().ToList());
+                Assert.Equal(12, context.Set<Scheduling>().Single().Hour);
 
                 scheduling.Hour = 13;
                 service.Update(1, scheduling);
-                Assert.Equal(13, context.Set<SchedulingEntity>().Single().Hour);
+                Assert.Equal(13, context.Set<Scheduling>().Single().Hour);
             }
         }
     }

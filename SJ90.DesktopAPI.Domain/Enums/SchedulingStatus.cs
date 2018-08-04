@@ -9,8 +9,7 @@ namespace SJ90.DesktopAPI.Domain.Enums
     /// </summary>
     public enum SchedulingStatus
     {
-        Solicited = 1,
-        Approved = 2,
-        Rejected = 3
+        Active = 1,
+        Cancelled = 2
     }
 }

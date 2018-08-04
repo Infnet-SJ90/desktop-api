@@ -1,60 +1,50 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SJ90.DesktopAPI.Domain;
-using SJ90.DesktopAPI.Domain.Interfaces;
 using SJ90.DesktopAPI.Infrastructure;
+using SJ90.DesktopAPI.Infrastructure.Repositories.Interfaces;
+using SJ90.DesktopAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SJ90.DesktopAPI.Services
 {
     public class SchedulingService : ISchedulingService
     {
+        private readonly ISchedulingRepository _schedulingRepository;
         private readonly DatabaseContext _context;
-        private readonly IMapper _mapper;
 
-        public SchedulingService(DatabaseContext context, IMapper mapper)
+        public SchedulingService(DatabaseContext context, ISchedulingRepository schedulingRepository)
         {
+            _schedulingRepository = schedulingRepository;
             _context = context;
-            _mapper = mapper;
         }
 
         public void Add(Scheduling scheduling)
         {
-            var entity = _mapper.Map<SchedulingEntity>(scheduling);
-            _context.Add<SchedulingEntity>(entity);
-            _context.SaveChanges();
+            _schedulingRepository.Create(scheduling);
         }
 
         public void Delete(long id)
         {
-            var entity = _context.Set<SchedulingEntity>().FirstOrDefault(scheduling => scheduling.Id == id);
-            _context.Entry(entity).State = EntityState.Deleted;
-            _context.SaveChanges();
+            _schedulingRepository.Delete(id);
         }
 
         public IEnumerable<Scheduling> GetAll()
         {
-            return _mapper.Map<IEnumerable<Scheduling>>(_context.Set<SchedulingEntity>().ToList());
+            return _schedulingRepository.GetAll();
         }
 
-        public Scheduling GetById(long id)
+        public async Task<Scheduling> GetById(long id)
         {
-            return _mapper.Map<Scheduling>(_context.Set<SchedulingEntity>().FirstOrDefault(scheduling => scheduling.Id == id));
+            return await _schedulingRepository.GetById(id);
         }
 
-        public void Update(long id, Scheduling scheduling)
+        public async void Update(long id, Scheduling scheduling)
         {
-            var entity = _context.Set<SchedulingEntity>().FirstOrDefault(sc=> sc.Id == id);
-            if (entity != null)
-            {
-                entity.Day = scheduling.Day;
-                entity.Hour = scheduling.Hour;
-                entity.Status = scheduling.Status;
-                _context.Set<SchedulingEntity>().Update(entity);
-                _context.SaveChanges();
-            }
+            await _schedulingRepository.Update(id, scheduling);
         }
     }
 }

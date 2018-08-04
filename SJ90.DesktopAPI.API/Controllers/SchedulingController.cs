@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using SJ90.DesktopAPI.Domain;
-using SJ90.DesktopAPI.Domain.Enums;
-using SJ90.DesktopAPI.Domain.Interfaces;
-using SJ90.DesktopAPI.Infrastructure;
+using SJ90.DesktopAPI.Services.Interfaces;
+using System.Collections.Generic;
 
 namespace SJ90.DesktopAPI.API.Controllers
 {
@@ -19,12 +12,10 @@ namespace SJ90.DesktopAPI.API.Controllers
     public class SchedulingController : Controller
     {
         private readonly ISchedulingService _schedulingService;
-        private readonly IMapper _mapper;
 
-        public SchedulingController(ISchedulingService schedulingService, IMapper mapper)
+        public SchedulingController(ISchedulingService schedulingService)
         {
             _schedulingService = schedulingService;
-            _mapper = mapper;
         }
 
         /// <summary>
@@ -65,7 +56,7 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// <summary>
         /// Adiciona um agendamento
         /// </summary>
-        /// <param name="value">Agendamento a ser adicionado</param>
+        /// <param name="scheduling">Agendamento a ser adicionado</param>
         [HttpPost]
         public IActionResult Post([FromBody]Scheduling scheduling)
         {
@@ -78,7 +69,7 @@ namespace SJ90.DesktopAPI.API.Controllers
         /// Atualiza um agendamento
         /// </summary>
         /// <param name="id">Identificador do agendamento</param>
-        /// <param name="value">Informações a serem atualizadas</param>
+        /// <param name="scheduling">Informações a serem atualizadas</param>
         [HttpPut("{id}")]
         public IActionResult Put(long id, [FromBody]Scheduling scheduling)
         {
