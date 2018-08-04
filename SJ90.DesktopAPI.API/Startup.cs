@@ -5,9 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
-using SJ90.DesktopAPI.Domain.Interfaces;
 using SJ90.DesktopAPI.Infrastructure;
+using SJ90.DesktopAPI.Infrastructure.Repositories;
+using SJ90.DesktopAPI.Infrastructure.Repositories.Interfaces;
 using SJ90.DesktopAPI.Services;
+using SJ90.DesktopAPI.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
 
@@ -55,7 +57,10 @@ namespace SJ90.DesktopAPI.API
             //services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase());
 
-            services.AddTransient<ISchedulingService, SchedulingService>();
+            services.AddScoped<ISchedulingService, SchedulingService>();
+            services.AddScoped<ISchedulingRepository, SchedulingRepository>();
+            services.AddScoped<ISchedulingRequestRepository, SchedulingRequestRepository>();
+            services.AddScoped<ISchedulingRequestService, SchedulingRequestService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

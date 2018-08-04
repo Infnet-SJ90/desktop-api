@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SJ90.DesktopAPI.Domain
 {
-    public class BaseEntity
+    public class BaseEntity : IBaseEntity
     {
         public long Id { get; set; }
         public DateTime AddedDate { get; set; }
