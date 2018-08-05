@@ -30,9 +30,9 @@ namespace SJ90.DesktopAPI.Infrastructure.Repositories
             _dbContext.SaveChanges();
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
-            return _dbContext.Set<TEntity>().AsNoTracking();
+            return _dbContext.Set<TEntity>().ToList();
         }
 
         public async Task<TEntity> GetById(long id)

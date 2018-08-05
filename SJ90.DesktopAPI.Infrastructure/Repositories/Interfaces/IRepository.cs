@@ -8,7 +8,7 @@ namespace SJ90.DesktopAPI.Infrastructure.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {
-        IQueryable<TEntity> GetAll();
+        IEnumerable<TEntity> GetAll();
 
         Task<TEntity> GetById(long id);
 

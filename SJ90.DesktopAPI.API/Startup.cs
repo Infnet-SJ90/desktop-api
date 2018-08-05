@@ -55,7 +55,8 @@ namespace SJ90.DesktopAPI.API
             });
 
             //services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase());
+            //services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase());
+            services.AddEntityFrameworkNpgsql().AddDbContext<DatabaseContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ISchedulingService, SchedulingService>();
             services.AddScoped<ISchedulingRepository, SchedulingRepository>();
