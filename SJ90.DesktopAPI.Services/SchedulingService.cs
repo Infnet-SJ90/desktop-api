@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using SJ90.DesktopAPI.Domain;
 using SJ90.DesktopAPI.Infrastructure;
 using SJ90.DesktopAPI.Infrastructure.Repositories.Interfaces;
+using SJ90.DesktopAPI.Services.Common;
 using SJ90.DesktopAPI.Services.Interfaces;
+using SJ90.DesktopAPI.Services.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +24,22 @@ namespace SJ90.DesktopAPI.Services
             _context = context;
         }
 
-        public void Add(Scheduling scheduling)
+        public ServiceResult Add(Scheduling scheduling)
         {
+            var result = new ServiceResult();
+            var validationResult = new SchedulingValidator().Validate(scheduling);
+            if (!validationResult.IsValid)
+            {
+                result.IsSuccess = false;
+                result.Errors = validationResult.Errors;
+
+                return result;
+            }
+
             _schedulingRepository.Create(scheduling);
+
+            result.IsSuccess = true;
+            return result;
         }
 
         public void Delete(long id)

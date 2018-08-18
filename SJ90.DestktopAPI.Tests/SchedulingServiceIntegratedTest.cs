@@ -13,11 +13,11 @@ using SJ90.DesktopAPI.Infrastructure.Repositories;
 
 namespace SJ90.DesktopAPI.Tests
 {
-    public class SchedulingServiceTest
+    public class SchedulingServiceIntegratedTest
     {
         public IMapper _mapper;
 
-        public SchedulingServiceTest()
+        public SchedulingServiceIntegratedTest()
         {
             var mappingProfile = new MappingProfile();
 

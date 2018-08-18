@@ -1,4 +1,5 @@
 ﻿using SJ90.DesktopAPI.Domain;
+using SJ90.DesktopAPI.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SJ90.DesktopAPI.Services.Interfaces
     {
         IEnumerable<Scheduling> GetAll();
         Task<Scheduling> GetById(long id);
-        void Add(Scheduling scheduling);
+        ServiceResult Add(Scheduling scheduling);
         void Update(long id, Scheduling scheduling);
         void Delete(long id);
     }

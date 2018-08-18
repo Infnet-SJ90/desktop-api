@@ -9,4 +9,9 @@
     <ProjectReference Include="..\SJ90.DesktopAPI.Infrastructure\SJ90.DesktopAPI.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="8.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>
