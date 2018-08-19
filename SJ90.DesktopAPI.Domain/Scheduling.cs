@@ -1,5 +1,7 @@
 ﻿using SJ90.DesktopAPI.Domain.Enums;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SJ90.DesktopAPI.Domain
 {
@@ -14,6 +16,7 @@ namespace SJ90.DesktopAPI.Domain
 
         public SchedulingStatus Status { get; set; }
 
+        public List<Resource> Resource { get; set; }
 
         public SchedulingRequest Request { get; set; }
         public long SchedulingRequestId { get; set; }

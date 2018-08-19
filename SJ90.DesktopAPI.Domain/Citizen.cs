@@ -14,5 +14,7 @@ namespace SJ90.DesktopAPI.Domain
         public string Name { get; set; }
 
         public string CPF { get; set; }
+
+        public Scheduling scheduling { get; set; }
     }
 }

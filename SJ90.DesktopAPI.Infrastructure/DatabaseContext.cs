@@ -17,6 +17,7 @@ namespace SJ90.DesktopAPI.Infrastructure
             base.OnModelCreating(modelBuilder);
             new SchedulingMap(modelBuilder.Entity<Scheduling>());
             new SchedulingRequestMap(modelBuilder.Entity<SchedulingRequest>());
+            new ResourceMap(modelBuilder.Entity<Resource>());
         }
 
         public override int SaveChanges()
