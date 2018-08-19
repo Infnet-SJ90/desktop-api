@@ -12,9 +12,9 @@ namespace SJ90.DesktopAPI.Infrastructure.DatabaseMappers
             entityBuilder.Property(t => t.Hour).IsRequired();
             entityBuilder.Property(t => t.Status).IsRequired();
 
-            entityBuilder.HasOne(scheduling => scheduling.Request)
-                         .WithOne(request => request.Scheduling)
-                         .HasForeignKey<SchedulingRequest>(scheduling => scheduling.SchedulingId).IsRequired();
+            entityBuilder.HasOne(scheduling => scheduling.Citizen)
+                         .WithMany(citizen => citizen.Scheduling)
+                         .HasForeignKey(scheduling => scheduling.CitizenId);
         }
     }
 }
