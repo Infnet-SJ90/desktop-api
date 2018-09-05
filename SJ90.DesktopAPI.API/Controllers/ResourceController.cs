@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace SJ90.DesktopAPI.API.Controllers
 {
     /// <summary>
-    /// Controller responsável por lidar com operações relacionadas a agendamentos
+    /// Controller responsável por lidar com operações relacionadas a recursos
     /// </summary>
     [Route("v1/[controller]")]
     public class ResourceController : Controller
@@ -19,9 +19,9 @@ namespace SJ90.DesktopAPI.API.Controllers
         }
 
         /// <summary>
-        /// Obtém todos os agendamentos
+        /// Obtém todos os recursos
         /// </summary>
-        /// <returns>Todos os agendamentos cadastrados</returns>
+        /// <returns>Todos os recursos cadastrados</returns>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -36,9 +36,9 @@ namespace SJ90.DesktopAPI.API.Controllers
         }
 
         /// <summary>
-        /// Obtém agendamento por identificador
+        /// Obtém recurso por identificador
         /// </summary>
-        /// <param name="id">identificador do agendamento</param>
+        /// <param name="id">identificador do recurso</param>
         /// <returns>Agendamento com o identificador passado</returns>
         [HttpGet("{id}")]
         public IActionResult Get(long id)
@@ -54,9 +54,9 @@ namespace SJ90.DesktopAPI.API.Controllers
         }
 
         /// <summary>
-        /// Adiciona um agendamento
+        /// Adiciona um recurso
         /// </summary>
-        /// <param name="resource">Agendamento a ser adicionado</param>
+        /// <param name="resource">recurso a ser adicionado</param>
         [HttpPost]
         public IActionResult Post([FromBody]Resource resource)
         {
@@ -66,9 +66,9 @@ namespace SJ90.DesktopAPI.API.Controllers
         }
 
         /// <summary>
-        /// Atualiza um agendamento
+        /// Atualiza um recurso
         /// </summary>
-        /// <param name="id">Identificador do agendamento</param>
+        /// <param name="id">Identificador do recurso</param>
         /// <param name="resource">Informações a serem atualizadas</param>
         [HttpPut("{id}")]
         public IActionResult Put(long id, [FromBody]Resource resource)
@@ -79,9 +79,9 @@ namespace SJ90.DesktopAPI.API.Controllers
         }
 
         /// <summary>
-        /// Deleta um agendamento
+        /// Deleta um recurso
         /// </summary>
-        /// <param name="id">Identificador do agendamento a ser deletado</param>
+        /// <param name="id">Identificador do recurso a ser deletado</param>
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
