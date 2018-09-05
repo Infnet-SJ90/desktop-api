@@ -18,6 +18,7 @@ namespace SJ90.DesktopAPI.Infrastructure
             new CitizenMap(modelBuilder.Entity<Citizen>());
             new SchedulingMap(modelBuilder.Entity<Scheduling>());
             new SchedulingRequestMap(modelBuilder.Entity<SchedulingRequest>());
+            new ResourceMap(modelBuilder.Entity<Resource>());
         }
 
         public override int SaveChanges()
