@@ -15,6 +15,7 @@ namespace SJ90.DesktopAPI.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            new CitizenMap(modelBuilder.Entity<Citizen>());
             new SchedulingMap(modelBuilder.Entity<Scheduling>());
             new SchedulingRequestMap(modelBuilder.Entity<SchedulingRequest>());
         }
