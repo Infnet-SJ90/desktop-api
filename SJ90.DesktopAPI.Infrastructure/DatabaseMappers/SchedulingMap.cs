@@ -19,6 +19,10 @@ namespace SJ90.DesktopAPI.Infrastructure.DatabaseMappers
             entityBuilder.HasMany<Resource>(s => s.Resource)
                          .WithOne(r => r.Scheduling)
                          .HasPrincipalKey(s => s.Id);
+          
+            entityBuilder.HasOne(scheduling => scheduling.Citizen)
+                         .WithMany(citizen => citizen.Scheduling)
+                         .HasForeignKey(scheduling => scheduling.CitizenId);
         }
     }
 }

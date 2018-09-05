@@ -15,8 +15,11 @@ namespace SJ90.DesktopAPI.Domain
         public int Hour { get; set; }
 
         public SchedulingStatus Status { get; set; }
-
+        
         public List<Resource> Resource { get; set; }
+
+        public Citizen Citizen { get; set; }
+        public long CitizenId { get; set; }
 
         public SchedulingRequest Request { get; set; }
         public long SchedulingRequestId { get; set; }
