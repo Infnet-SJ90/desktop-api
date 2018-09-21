@@ -10,8 +10,8 @@ namespace SJ90.DesktopAPI.Services.Interfaces
     {
         IEnumerable<Citizen> GetAll();
         Task<Citizen> GetById(long id);
-        void Add(Citizen scheduling);
-        void Update(long id, Citizen scheduling);
+        void Add(Citizen citizen);
+        void Update(long id, Citizen citizen);
         void Delete(long id);
     }
 }
