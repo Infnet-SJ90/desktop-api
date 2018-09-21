@@ -10,8 +10,8 @@ namespace SJ90.DesktopAPI.Services.Interfaces
     {
         IEnumerable<SchedulingRequest> GetAll();
         Task<SchedulingRequest> GetById(long id);
-        void Add(SchedulingRequest scheduling);
-        void Update(long id, SchedulingRequest scheduling);
+        void Add(SchedulingRequest schedulingRequest);
+        void Update(long id, SchedulingRequest schedulingRequest);
         void Delete(long id);
     }
 }

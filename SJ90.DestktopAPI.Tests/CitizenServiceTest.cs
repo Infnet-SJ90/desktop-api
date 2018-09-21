@@ -13,11 +13,11 @@ using SJ90.DesktopAPI.Infrastructure.Repositories;
 
 namespace SJ90.DesktopAPI.Tests
 {
-    public class SchedulingServiceTest
+    public class CitizenServiceTest
     {
         public IMapper _mapper;
 
-        public SchedulingServiceTest()
+        public CitizenServiceTest()
         {
             var mappingProfile = new MappingProfile();
 
@@ -34,24 +34,22 @@ namespace SJ90.DesktopAPI.Tests
 
             using (var context = new DatabaseContext(options))
             {
-                var scheduling = new Scheduling
+                var citizen = new Citizen
                 {
-                    Day = DateTime.Today,
-                    Hour = 12,
-                    Id = 1,
-                    Status = SchedulingStatus.Active,
-                    SchedulingRequestId = 1
+                    Name = "Jorge",
+                    CPF = "12345678901",
+                    Id = 1
                 };
 
-                var service = new SchedulingService(context, new SchedulingRepository(context));
-                service.Add(scheduling);
+                var service = new CitizenService(context, new CitizenRepository(context));
+                service.Add(citizen);
             }
 
             using (var context = new DatabaseContext(options))
             {
-                Assert.Single(context.Set<Scheduling>().ToList());
+                Assert.Single(context.Set<Citizen>().ToList());
 
-                Assert.Equal(1, context.Set<Scheduling>().Single().Id);
+                Assert.Equal(1, context.Set<Citizen>().Single().Id);
             }
         }
 
@@ -64,21 +62,20 @@ namespace SJ90.DesktopAPI.Tests
 
             using (var context = new DatabaseContext(options))
             {
-                var scheduling = new Scheduling
+                var citizen = new Citizen
                 {
-                    Day = DateTime.Today,
-                    Hour = 12,
-                    Status = SchedulingStatus.Active
+                    Name = "Joana",
+                    CPF = "23456789012"
                 };
 
-                var service = new SchedulingService(context, new SchedulingRepository(context));
-                service.Add(scheduling);
-                Assert.Single(context.Set<Scheduling>().ToList());
+                var service = new CitizenService(context, new CitizenRepository(context));
+                service.Add(citizen);
+                Assert.Single(context.Set<Citizen>().ToList());
 
-                var insertedScheduling = service.GetAll().First();
+                var insertedCitizen = service.GetAll().First();
 
-                service.Delete(insertedScheduling.Id);
-                Assert.Empty(context.Set<Scheduling>().ToList());
+                service.Delete(insertedCitizen.Id);
+                Assert.Empty(context.Set<Citizen>().ToList());
             }
         }
 
@@ -91,22 +88,21 @@ namespace SJ90.DesktopAPI.Tests
 
             using (var context = new DatabaseContext(options))
             {
-                var scheduling = new Scheduling
+                var citizen = new Citizen
                 {
-                    Day = DateTime.Today,
-                    Hour = 12,
-                    Id = 1,
-                    Status = SchedulingStatus.Active
+                    Name = "José",
+                    CPF = "34567890123",
+                    Id = 1
                 };
 
-                var service = new SchedulingService(context, new SchedulingRepository(context));
-                service.Add(scheduling);
-                Assert.Single(context.Set<Scheduling>().ToList());
-                Assert.Equal(12, context.Set<Scheduling>().Single().Hour);
+                var service = new CitizenService(context, new CitizenRepository(context));
+                service.Add(citizen);
+                Assert.Single(context.Set<Citizen>().ToList());
+                Assert.Equal("José", context.Set<Citizen>().Single().Name);
 
-                scheduling.Hour = 13;
-                service.Update(1, scheduling);
-                Assert.Equal(13, context.Set<Scheduling>().Single().Hour);
+                citizen.Name = "Zé das Couves";
+                service.Update(1, citizen);
+                Assert.Equal("Zé das Couves", context.Set<Citizen>().Single().Name);
             }
         }
     }
