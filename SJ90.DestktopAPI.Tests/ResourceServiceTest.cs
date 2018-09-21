@@ -37,7 +37,7 @@ namespace SJ90.DesktopAPI.Tests
                 var resource = new Resource
                 {
                     Weight = 10,
-                    LicensePlate = "ABC",
+                    MaximumWeight = 15,
                     SchedulingId = 10
                 };
 
@@ -65,7 +65,7 @@ namespace SJ90.DesktopAPI.Tests
                 var resource = new Resource
                 {
                     Weight = 10,
-                    LicensePlate = "ABC",
+                    MaximumWeight = 15,
                     SchedulingId = 10
                 };
 
@@ -92,7 +92,7 @@ namespace SJ90.DesktopAPI.Tests
                 var resource = new Resource
                 {
                     Weight = 10,
-                    LicensePlate = "ABC",
+                    MaximumWeight = 15,
                     SchedulingId = 10
                 };
 
@@ -106,31 +106,5 @@ namespace SJ90.DesktopAPI.Tests
                 Assert.Equal(13, context.Set<Resource>().Single().Weight);
             }
         }
-
-        //[Fact]
-        //public void Get_get_by_id_and_not_exists()
-        //{
-        //    var options = new DbContextOptionsBuilder<DatabaseContext>()
-        //        .UseInMemoryDatabase(databaseName: "Get_get_by_id_and_not_exists")
-        //        .Options;
-
-        //    using (var context = new DatabaseContext(options))
-        //    {
-        //        var resource = new Resource
-        //        {
-        //            Weight = 10,
-        //            LicensePlate = "ABC",
-        //            SchedulingId = 10,
-        //            Id = 1
-        //        };
-
-        //        var service = new ResourceService(context, new ResourceRepository(context));
-        //        service.Add(resource);
-        //        Assert.Single(context.Set<Resource>().ToList());
-        //        var insertedResource = service.GetById(2);
-
-        //        Assert.Null(insertedResource);
-        //    }
-        //}
     }
 }
