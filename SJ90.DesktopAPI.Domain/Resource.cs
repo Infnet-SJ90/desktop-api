@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SJ90.DesktopAPI.Domain.Enums;
+using System;
 
 namespace SJ90.DesktopAPI.Domain
 {
@@ -9,8 +10,11 @@ namespace SJ90.DesktopAPI.Domain
     {
 
         public int Weight { get; set; }
+        public int MaximumWeight { get; set; }
 
-        public string LicensePlate { get; set; }
+        public ResourceStatus status { get; set; }
+
+        public ResourceType type{ get; set; }
 
         public long SchedulingId { get; set; }
         public Scheduling Scheduling { get; set; }

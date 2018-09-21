@@ -12,7 +12,7 @@ namespace SJ90.DesktopAPI.Infrastructure.DatabaseMappers
         {
             entityBuilder.HasKey(t => t.Id);
             entityBuilder.Property(t => t.Weight).IsRequired();
-            entityBuilder.Property(t => t.LicensePlate).IsRequired();
+            entityBuilder.Property(t => t.MaximumWeight).IsRequired();
 
             entityBuilder.HasOne(c => c.Scheduling)
                          .WithMany(e => e.Resource)
