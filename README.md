@@ -1,3 +1,5 @@
+![Heroku](http://heroku-badges.herokuapp.com/?app=sj90&root=swagger)
+
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/Infnet-SJ90/desktop-api.svg?columns=all)](https://waffle.io/Infnet-SJ90/desktop-api)
 
 # Scheduling-api

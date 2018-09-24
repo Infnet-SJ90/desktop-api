@@ -61,6 +61,10 @@ namespace SJ90.DesktopAPI.API
             services.AddScoped<ISchedulingRepository, SchedulingRepository>();
             services.AddScoped<ISchedulingRequestRepository, SchedulingRequestRepository>();
             services.AddScoped<ISchedulingRequestService, SchedulingRequestService>();
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<IResourceService, ResourceService>();
+            services.AddScoped<ICitizenRepository, CitizenRepository>();
+            services.AddScoped<ICitizenService, CitizenService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
